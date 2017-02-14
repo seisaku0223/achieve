@@ -16,6 +16,8 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blogs_params)
+    # user_idを代入する
+    @blog.user_id = current_user.id
     if @blog.save
       # 一覧画面へ遷移し、"ブログを作成しました！"とメッセージを表示します。
       redirect_to blogs_path, notice: "ブログを作成しました！"

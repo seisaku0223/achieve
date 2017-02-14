@@ -31,7 +31,7 @@
         (変更しない場合は空白にしてください。)<br />
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         <% if @minimum_password_length %>
-          <em><%= @minimum_password_length %> 文字以上必須</em>
+          <%= @minimum_password_length %> 文字以上必須
         <% end %>
       </div>
       <br />
