@@ -52,3 +52,7 @@ gem 'takarabako'
 group :development do
   gem 'letter_opener_web'
 end
+gem 'pry-rails'
+gem 'better_errors'
+gem 'rails_admin'
+gem 'cancan'
