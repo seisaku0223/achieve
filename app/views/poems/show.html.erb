@@ -1,0 +1,15 @@
+<h1>Poem Show</h1>
+
+<center>
+<table border="1">
+    <tr>
+      <th>Title</th>
+      <td><%= @poem.title %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= @poem.content %></td>
+    </tr>
+</table>
+</center>
+<%= link_to 'Back', poems_path %>

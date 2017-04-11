@@ -4,18 +4,8 @@
     <p>下記フォームへ内容を入力し、ボタンを押して下さい。</p>
 
     <%= form_for(@contact, url: confirm_contacts_path) do |f| %>
-      <% if @contact.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+    <%= f.error_messages! %>
       
-          <ul>
-            <% @contact.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-  
       <%= f.label :名前 %>
       <%= f.text_field :name, class: 'form-control' %>
       <br>
