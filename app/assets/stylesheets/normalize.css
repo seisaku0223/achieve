@@ -417,3 +417,8 @@ textarea {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
+
+img{
+  max-width: 100%;
+  max-height: 96px;
+}

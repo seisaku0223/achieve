@@ -22,35 +22,44 @@
       </div>
       <br />
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>現在、確認中です。 for: <%= resource.unconfirmed_email %></div>
+      <% if @user.provider.blank? %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>現在、確認中です。 for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :新しいパスワード %><br />
+          (変更しない場合は空白にしてください。)<br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <% if @minimum_password_length %>
+            <%= @minimum_password_length %> 文字以上必須
+          <% end %>
+        </div>
+        <br />
+
+        <div class="field">
+          <%= f.label :新しいパスワード（再入力） %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+        <br />
+
+        <div class="field">
+          <%= f.label :現在のパスワード %><br />
+          （変更承認のために必要です。）<br />
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+        <br />
       <% end %>
 
       <div class="field">
-        <%= f.label :新しいパスワード %><br />
-        (変更しない場合は空白にしてください。)<br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-        <% if @minimum_password_length %>
-          <%= @minimum_password_length %> 文字以上必須
-        <% end %>
+        <%= profile_img(@user) if profile_img(@user) %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
       </div>
-      <br />
-
-      <div class="field">
-        <%= f.label :新しいパスワード（再入力） %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-      </div>
-      <br />
-
-      <div class="field">
-        <%= f.label :現在のパスワード %><br />
-        （変更承認のために必要です。）<br />
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-      </div>
-      <br />
 
       <div class="actions">
-        <%= f.submit "変更する" %>
+        <%= f.submit "更新", class: "btn btn-primary btn-block" %>
       </div>
     <% end %>
     <br />
