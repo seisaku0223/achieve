@@ -19,3 +19,9 @@ input[type="submit"].btn-block{
 .container{
   padding-bottom: 85px;
 }
+
+.miniavatar {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
