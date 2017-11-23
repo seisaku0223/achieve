@@ -45,17 +45,17 @@ group :development, :test do
   gem 'better_errors'
 end
 
+group :development do
+  gem 'letter_opener_web'
+  gem 'dotenv-rails'
+end
+
 gem 'twitter-bootstrap-rails'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'faker'
 gem 'takarabako'
-
-group :development do
-  gem 'letter_opener_web'
-  gem 'dotenv-rails'
-end
 
 gem 'rails_admin'
 gem 'cancan'
