@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment_id, only: [:edit, :update, :destroy]
 
   # コメントを保存、投稿するためのアクションです。
   def create
@@ -19,12 +20,11 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    #idをキーとして取得するメソッド
   end
 
   def update
     #idをキーに、今保存されている内容を取得、下記で更新する
-    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       redirect_to blogs_path, notice: "コメントを編集しました！"
     else
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    #idをキーとして取得するメソッド
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to blog_path, notice: 'コメントを削除しました！' }
@@ -49,4 +49,10 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:blog_id, :content)
     end
+
+    #idをキーとして取得するメソッド
+    def set_comment_id
+      @comment = Comment.find(params[:id])
+    end
+
 end
