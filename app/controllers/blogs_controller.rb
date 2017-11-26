@@ -1,12 +1,18 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
   #送られたidをキーとして取得する
-  before_action :set_blog_id, only: [:edit, :update, :destroy]
+  before_action :set_blog_id, only: [:show, :edit, :update, :destroy]
   #送られた変数を取得し、インスタンス変数化するメソッド
   before_action :set_blog_new, only: [:create, :confirm]
 
   def index
     @blogs = Blog.all
+  end
+
+  # showアクションを定義します。入力フォームと一覧を表示するためインスタンスを2つ生成します。
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
   end
 
   def new

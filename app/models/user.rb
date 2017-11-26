@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  has_many :blogs
+  # destroyを設定することで、Blogモデルが削除された時に紐づくコメントのレコードも削除されるようになる
+  has_many :blogs, dependent: :destroy
+  # CommentモデルのAssociationを設定
+  has_many :comments, dependent: :destroy
+
 
   def self.create_unique_string
     SecureRandom.uuid

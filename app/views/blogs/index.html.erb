@@ -2,10 +2,12 @@
   <div class="wrapper col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
     <p><%= notice %></p>
     <h1>ブログ一覧</h1>
-      <%= link_to "ブログを作成する", new_blog_path, class: 'btn btn-default' %>
-  <% @blogs.each do |blog| %>
-    <div class="row">
-      <h4><strong><%= blog.title %></strong></h4>
+    <%= link_to "ブログを作成する", new_blog_path, class: 'btn btn-default' %>
+    <% @blogs.each do |blog| %>
+      <div class="row">
+        <%= link_to blog_path(blog) do %>
+        <h4><strong><%= blog.title %></strong></h4>
+        <% end %>
       <p><%= blog.content %></p>
       <p>
       <%= profile_img(blog.user) %>
