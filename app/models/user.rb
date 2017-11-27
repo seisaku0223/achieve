@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
   # CommentモデルのAssociationを設定
   has_many :comments, dependent: :destroy
 
+  #フォロワー機能用
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  #中間テーブルを利用したアソシエーション設定
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   def self.create_unique_string
     SecureRandom.uuid
