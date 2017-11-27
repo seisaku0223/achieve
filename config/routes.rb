@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
+  #devise_forより以下に記述すること
   resources :blogs do
     resources :comments
     post :confirm, on: :collection
@@ -17,6 +18,11 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+
+  #ユーザー一覧ページ用
+  resources :users, only: [:index, :show]
+  #フォロー関係作成用
+  resources :relationships, only: [:create, :destroy]
 
   resources :poems, only: [:index, :show]
 
