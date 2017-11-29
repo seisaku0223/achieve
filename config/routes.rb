@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  #メッセージ機能用
+  resources :conversations do
+    resources :messages
+  end
 
   #devise_forより以下に記述すること
   resources :blogs do
