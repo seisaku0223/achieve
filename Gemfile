@@ -64,6 +64,7 @@ gem 'jquery-turbolinks'
 gem 'devise'
 gem 'faker'
 gem 'takarabako'
+gem 'yoshida'
 
 gem 'rails_admin'
 gem 'cancan'
