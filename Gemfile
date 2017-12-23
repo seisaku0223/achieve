@@ -42,6 +42,7 @@ group :development, :test do
   # gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # dive22用
   gem 'spring'
   gem 'pry-rails'
   gem 'better_errors'
@@ -60,6 +61,7 @@ group :development do
   gem 'letter_opener_web'
   gem 'web-console', '~> 2.0'
   # gem 'dotenv-rails'
+  gem 'binding_of_caller'
 end
 
 group :test do
